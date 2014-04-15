@@ -12,6 +12,9 @@ function callback($tweet){
 		if( empty($tweet->user->friends_count) || empty($tweet->user->followers_count) ) return;
 		//RT非表示かどうか
 		if( empty($_GET['rtflag']) && strstr( $text, "RT " )) return;
+		//プロフィールに特定の文字が含まれていたらスルー
+		$ngword = array('bot', 'なりきり', 'は');
+		if( empty($_GET['botflag']) && in_array( $tweet->user->description, $ngword)) return;
 		//botかどうか
 		$source = preg_replace('/<[^>]+>/', '', $tweet->source);
 		if( empty($_GET['botflag']) && in_array( $source, $botSource)) return;
