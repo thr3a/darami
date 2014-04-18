@@ -5,8 +5,10 @@
 	<title>ダラ見たん</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="http://nyaaz.dip.jp/lib/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://www.berriart.com/sidr/javascripts/vendor/sidr/stylesheets/jquery.sidr.dark.css">
 	<script src="http://nyaaz.dip.jp/lib/jquery-2.1.0.min.js"></script>
 	<script src="./jquery.pause.min.js"></script>
+<script src="jquery.sidr.min.js"></script>
 	<script>
 	//phpから受け取ったツイートを表示
 	function showTweet( tweetdiv ){
@@ -32,6 +34,15 @@
 	</script>
 </head>
 <body>
+<a id="simple-menu" class="tiny button secondary radius" href="#sidr">Simple menu</a>
+<div id="sidr">
+  <!-- Your content -->
+  <ul>
+    <li><a href="#">List 1</a></li>
+    <li class="active"><a href="#">List 2</a></li>
+    <li><a href="#">List 3</a></li>
+  </ul>
+</div>
 <div class="container" style="padding-top: 70px;">
 	
 <?php
@@ -92,9 +103,14 @@ if( $tmh->request('GET', $tmh->url('1.1/account/verify_credentials')) !== 200 ){
 	define("OAUTH_SECRET", $_SESSION['user']['oauth_token_secret']);
 	
 	$sc = new SampleConsumer(OAUTH_TOKEN, OAUTH_SECRET, Phirehose::METHOD_SAMPLE);
-	$sc->consume();
+	//$sc->consume();
 }
 ?>
 </div>
+<script>
+$(document).ready(function() {
+	$('#simple-menu').sidr();
+});
+</script>
 </body>
 </html>

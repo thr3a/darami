@@ -49,6 +49,6 @@ function callback($tweet){
 		//echo '<script>$("#timeline").prepend($(\'<li class="media">' . $timeline . '</li>\').fadeIn(\'slow\'));</script>';
 		ob_flush();
 		flush();
-		sleep(1);
+		usleep(500000);
 	}
 }
